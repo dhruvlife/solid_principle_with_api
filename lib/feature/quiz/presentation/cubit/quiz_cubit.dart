@@ -18,4 +18,18 @@ class QuizCubit extends Cubit<QuizState> {
       (quiz) => emit(QuizLoaded(quiz)),
     );
   }
+    void calculateResult(Map<int, String> selectedAnswers) {
+    if (state is QuizLoaded) {
+      final questions = (state as QuizLoaded).quiz.results;
+      int correctAnswers = 0;
+
+      for (int i = 0; i < questions!.length; i++) {
+        if (selectedAnswers[i] == questions[i].correctAnswer) {
+          correctAnswers++;
+        }
+      }
+
+      emit(QuizResult(correctAnswers, questions.length));
+    }
+  }
 }

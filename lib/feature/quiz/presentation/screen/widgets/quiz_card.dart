@@ -9,9 +9,7 @@ class QuestionCard extends StatelessWidget {
   final List<String> options;
   final Function(String) onSelected;
   final String? selectedAnswer;
-  final bool showAnswers;
-  final bool isCorrect;
-  final String correctAnswer;
+
   const QuestionCard({
     super.key,
     required this.question,
@@ -19,9 +17,6 @@ class QuestionCard extends StatelessWidget {
     required this.onSelected,
     required this.currentQuestionNumber,
     required this.selectedAnswer,
-    required this.showAnswers,
-    required this.isCorrect,
-    required this.correctAnswer,
   });
   @override
   Widget build(BuildContext context) {
@@ -37,38 +32,24 @@ class QuestionCard extends StatelessWidget {
           Column(
             children: options.map((option) {
               final isSelected = option == selectedAnswer;
-              final isCorrectOption = option == correctAnswer;
+           
 
-              Color getOptionColor() {
-                if (!showAnswers) {
-                  return isSelected ? Colors.blue : Colors.white;
-                } else {
-                  if (isCorrectOption) return Colors.green;
-                  if (isSelected && !isCorrectOption) {
-                    return const Color.fromARGB(169, 253, 129, 120);
-                  }
-                  return Colors.white;
-                }
-              }
+              
               return GestureDetector(
                 onTap: () {
-                  if (!showAnswers) {
-                    onSelected(option);
-                  }
+                
                 },
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: getOptionColor(),
+                
                     border: Border.all(
                       color: isSelected ? Colors.blue : Colors.grey,
                     ),
                   ),
                   child: AppText(
                     data: option,
-                    color: showAnswers && isCorrectOption
-                        ? Colors.white
-                        : Colors.black,
+                  
                   ).paddingAll(12.sp),
                 ).marginSymmetric(vertical: 4.h),
               );
