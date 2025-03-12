@@ -9,6 +9,7 @@ class WeatherImplRemoteRepo implements WeatherRemoteRepo{
 
   WeatherImplRemoteRepo(this.apiService);
 
+  @override
   Future<Weather> getWeather(String cityName) async {
     return await apiService.getWeather(cityName, ApiSecrets.apiKey, "metric");
   }

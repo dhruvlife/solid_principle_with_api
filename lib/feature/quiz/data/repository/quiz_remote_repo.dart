@@ -13,10 +13,3 @@ class QuizImplRemoteRepo implements QuizRemoteRepo {
     return quizApiService.getQuizResponse(amount, "multiple");
   }
 }
-// class QuizRemoteRepo {
-//   final QuizApiService quizApiService;
-//   QuizRemoteRepo(this.quizApiService);
-//   Future<QuizResponse> getQuizResponse(int amount)async{
-//     return quizApiService.getQuizResponse(amount,"multiple");
-//   }
-// }
