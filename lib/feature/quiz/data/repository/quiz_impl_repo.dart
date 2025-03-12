@@ -8,6 +8,7 @@ import 'package:weather/feature/quiz/domain/repository/repository.dart';
 class QuizImplRepo implements QuizRepository {
   final QuizRemoteRepo quizRemoteRepo;
   QuizImplRepo(this.quizRemoteRepo);
+  
   @override
   Future<Either<Failure, QuizEntity>> getQuizResponse(int amount) async {
     try {

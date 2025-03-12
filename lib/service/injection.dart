@@ -19,7 +19,7 @@ final GetIt getIt = GetIt.instance;
 void setupLocator() {
   getIt.registerSingleton<Dio>(DioClient.getDio(),instanceName: 'weatherDio',);
   getIt.registerSingleton<ApiService>(ApiService(getIt(instanceName: 'weatherDio')));
-  getIt.registerSingleton<WeatherRemoteRepo>(WeatherRemoteRepo(getIt()));
+  getIt.registerSingleton<WeatherRemoteRepo>(WeatherImplRemoteRepo(getIt()));
   getIt.registerSingleton<WeatherRepository>(WeatherRepositoryImpl(getIt()));
   getIt.registerSingleton<WeatherUseCase>(WeatherUseCase(getIt()));
   getIt.registerFactory(() => WeatherCubit(getIt()));
@@ -27,7 +27,7 @@ void setupLocator() {
   // chat
   getIt.registerSingleton<Dio>(DioClient.getQuizDio(),instanceName: 'quizDio',);
   getIt.registerSingleton<QuizApiService>(QuizApiService(getIt(instanceName: 'quizDio')));
-  getIt.registerSingleton<QuizRemoteRepo>(QuizRemoteRepo(getIt()));
+  getIt.registerSingleton<QuizRemoteRepo>(QuizImplRemoteRepo(getIt()));
   getIt.registerSingleton<QuizRepository>(QuizImplRepo(getIt()));
   getIt.registerSingleton<QuizUsecase>(QuizUsecase(getIt()));
   getIt.registerFactory(() => QuizCubit(getIt()));
