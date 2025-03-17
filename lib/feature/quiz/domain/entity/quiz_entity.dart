@@ -1,9 +1,9 @@
 import 'package:weather/feature/quiz/data/model/quiz.dart';
 
-class QuizEntity {
+class QuizResponse {
   int? responseCode;
-  List<Quiz>? results;
-  QuizEntity({
+  List<QuizDataModel>? results;
+  QuizResponse({
     this.responseCode,
     this.results,
   });

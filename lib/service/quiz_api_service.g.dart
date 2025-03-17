@@ -20,12 +20,12 @@ class _QuizApiService implements QuizApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<QuizResponse> getQuizResponse(int amount, String type) async {
+  Future<QuizModel> getQuizResponse(int amount, String type) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'amount': amount, r'type': type};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<QuizResponse>(
+    final _options = _setStreamType<QuizModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -36,9 +36,9 @@ class _QuizApiService implements QuizApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late QuizResponse _value;
+    late QuizModel _value;
     try {
-      _value = QuizResponse.fromJson(_result.data!);
+      _value = QuizModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

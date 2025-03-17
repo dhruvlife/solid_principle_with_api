@@ -1,16 +1,16 @@
-import 'package:weather/core/api_constants/secrets.dart';
+import 'package:weather/core/secrets/secrets.dart';
 import 'package:weather/feature/weather/data/model/weather.dart';
 import 'package:weather/service/api_service.dart';
 abstract interface class WeatherRemoteRepo {
-  Future<Weather> getWeather(String cityName);
+  Future<Weather> getWeather({required String cityName});
 }
 class WeatherImplRemoteRepo implements WeatherRemoteRepo{
   final ApiService apiService;
 
-  WeatherImplRemoteRepo(this.apiService);
+  WeatherImplRemoteRepo({required this.apiService});
 
   @override
-  Future<Weather> getWeather(String cityName) async {
-    return await apiService.getWeather(cityName, ApiSecrets.apiKey, "metric");
+  Future<Weather> getWeather({required String cityName}) async {
+    return await apiService.getWeather(cityName, Secrets.apiKey, "metric");
   }
 }

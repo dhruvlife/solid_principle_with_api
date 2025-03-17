@@ -1,4 +1,5 @@
 class AppStrings {
+  AppStrings._();
   static const String submit ="submit";
   static const String startQuiz ="Start Quiz";
   static const String quizResult ="Quiz Result";

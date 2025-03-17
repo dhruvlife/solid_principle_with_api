@@ -3,19 +3,20 @@ import 'package:fpdart/fpdart.dart';
 import 'package:weather/core/failure/failure.dart';
 import 'package:weather/feature/quiz/data/repository/quiz_remote_repo.dart';
 import 'package:weather/feature/quiz/domain/entity/quiz_entity.dart';
-import 'package:weather/feature/quiz/domain/repository/repository.dart';
+import 'package:weather/feature/quiz/domain/repository/quiz_repository.dart';
+
 
 class QuizImplRepo implements QuizRepository {
   final QuizRemoteRepo quizRemoteRepo;
-  QuizImplRepo(this.quizRemoteRepo);
+  QuizImplRepo({required this.quizRemoteRepo});
   
   @override
-  Future<Either<Failure, QuizEntity>> getQuizResponse(int amount) async {
+  Future<Either<Failure, QuizResponse>> getQuizResponse({required  int amount}) async {
     try {
-      final quizResponse = await quizRemoteRepo.getQuizResponse(amount);
+      final quizResponse = await quizRemoteRepo.getQuizResponse(amount: amount);
       return Right(quizResponse);
     } on DioException catch (e) {
-      return Left(Failure("An error occurred: ${e.message}"));
+      return Left(Failure(messege:"An error occurred: ${e.message}"));
     }
   }
 }

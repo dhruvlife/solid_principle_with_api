@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:weather/core/api_constants/base_url.dart';
+import 'package:weather/core/secrets/secrets.dart';
 
 class DioClient {
   static Dio getDio() {
     BaseOptions baseOptions = BaseOptions(
-      baseUrl: BaseUrl.baseUrl,
+      baseUrl: Secrets.baseUrl,
       connectTimeout: Duration(seconds: 10),
       receiveTimeout: Duration(seconds: 10),
     );
@@ -31,7 +31,7 @@ class DioClient {
 
   static Dio getQuizDio() {
     BaseOptions baseOptions = BaseOptions(
-      baseUrl: BaseUrl.quizBaseUrl,
+      baseUrl: Secrets.quizBaseUrl,
       connectTimeout: Duration(seconds: 10),
       receiveTimeout: Duration(seconds: 10),
     );

@@ -2,13 +2,18 @@ import 'package:fpdart/fpdart.dart';
 import 'package:weather/core/failure/failure.dart';
 import 'package:weather/core/usecase/usecase.dart';
 import 'package:weather/feature/quiz/domain/entity/quiz_entity.dart';
-import 'package:weather/feature/quiz/domain/repository/repository.dart';
+import 'package:weather/feature/quiz/domain/repository/quiz_repository.dart';
 
-class QuizUsecase implements Usecase<QuizEntity,int>{
+class QuizUsecase implements Usecase<QuizResponse, QuizParam> {
   final QuizRepository quizRepository;
-  QuizUsecase(this.quizRepository);
+  QuizUsecase({required this.quizRepository});
   @override
-  Future<Either<Failure, QuizEntity>> call(int amount) {
-    return quizRepository.getQuizResponse(amount);
+  Future<Either<Failure, QuizResponse>> call(QuizParam quizParam) {
+    return quizRepository.getQuizResponse(amount:quizParam.amount);
   }
+}
+
+class QuizParam {
+  final int amount;
+  QuizParam({required this.amount});
 }

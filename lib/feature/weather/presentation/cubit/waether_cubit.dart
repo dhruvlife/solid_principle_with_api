@@ -8,14 +8,14 @@ part 'waether_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
   final WeatherUseCase weatherUseCase;
-  WeatherCubit(this.weatherUseCase) : super(WeatherInitial());
+  WeatherCubit({required this.weatherUseCase}) : super(WeatherInitial());
   void getWeather(String cityName) async {
     emit(WeatherLoading());
     final Either<Failure, WeatherEntity> result =
-        await weatherUseCase.call(cityName);
+        await weatherUseCase.call(WeatherParam(city: cityName));
     result.fold(
-      (failure) => emit(WeatherError(failure.messege)),
-      (weather) => emit(WeatherLoaded(weather)),
+      (failure) => emit(WeatherError(message: failure.messege)),
+      (weather) => emit(WeatherLoaded(weather: weather)),
     );
   }
 }

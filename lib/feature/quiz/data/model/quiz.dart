@@ -1,14 +1,15 @@
+import 'package:weather/feature/quiz/domain/entity/quiz_data_response.dart';
 import 'package:weather/feature/quiz/domain/entity/quiz_entity.dart';
 
-class QuizResponse extends QuizEntity {
-  QuizResponse({super.responseCode, super.results});
+class QuizModel extends QuizResponse {
+  QuizModel({super.responseCode, super.results});
 
-  QuizResponse.fromJson(Map<String, dynamic> json) {
+  QuizModel.fromJson(Map<String, dynamic> json) {
     responseCode = json['response_code'];
     if (json['results'] != null) {
-      results = <Quiz>[];
+      results = <QuizDataModel>[];
       json['results'].forEach((v) {
-        results!.add(Quiz.fromJson(v));
+        results!.add(QuizDataModel.fromJson(v));
       });
     }
   }
@@ -23,23 +24,11 @@ class QuizResponse extends QuizEntity {
   }
 }
 
-class Quiz {
-  String? type;
-  String? difficulty;
-  String? category;
-  String? question;
-  String? correctAnswer;
-  List<String>? incorrectAnswers;
+class QuizDataModel extends QuizDataResponse {
+QuizDataModel({super.category,super.correctAnswer,super.difficulty,super.incorrectAnswers,super.question,super.type});
 
-  Quiz(
-      {this.type,
-      this.difficulty,
-      this.category,
-      this.question,
-      this.correctAnswer,
-      this.incorrectAnswers});
 
-  Quiz.fromJson(Map<String, dynamic> json) {
+  QuizDataModel.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     difficulty = json['difficulty'];
     category = json['category'];

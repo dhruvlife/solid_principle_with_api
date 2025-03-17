@@ -8,7 +8,7 @@ import 'package:weather/feature/quiz/presentation/cubit/quiz_cubit.dart';
 import 'package:weather/feature/quiz/presentation/screen/widgets/quiz_card.dart';
 
 class QuizContent extends StatefulWidget {
-  final List<Quiz> questions;
+  final List<QuizDataModel> questions;
   const QuizContent({super.key, required this.questions});
   @override
   State<QuizContent> createState() => _QuizContentState();

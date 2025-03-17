@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:weather/core/api_constants/base_url.dart';
-import 'package:weather/core/api_constants/end_points.dart';
+
+import 'package:weather/core/secrets/end_points.dart';
+import 'package:weather/core/secrets/secrets.dart';
 import 'package:weather/feature/weather/data/model/weather.dart';
 part 'api_service.g.dart';
 
-@RestApi(baseUrl: BaseUrl.baseUrl)
+@RestApi(baseUrl: Secrets.baseUrl)
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
   @GET(EndPoints.weather)

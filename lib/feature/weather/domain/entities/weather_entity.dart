@@ -1,4 +1,9 @@
-import 'package:weather/feature/weather/data/model/weather.dart';
+import 'package:weather/feature/weather/domain/entities/cloud.dart';
+import 'package:weather/feature/weather/domain/entities/coord.dart';
+import 'package:weather/feature/weather/domain/entities/sys.dart';
+import 'package:weather/feature/weather/domain/entities/w_main.dart';
+import 'package:weather/feature/weather/domain/entities/weather_info.dart';
+import 'package:weather/feature/weather/domain/entities/wind.dart';
 
 class WeatherEntity {
   Coord? coord;

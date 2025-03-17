@@ -8,16 +8,16 @@ part 'quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
   final QuizUsecase quizUsecase;
-  QuizCubit(this.quizUsecase) : super(QuizInitial());
+  QuizCubit({required this.quizUsecase}) : super(QuizInitial());
 
   final Map<int, String> selectedAnswers = {};
 
   void getQuizResponse(int amount) async {
     emit(QuizLoading());
-    final Either<Failure, QuizEntity> result = await quizUsecase.call(amount);
+    final Either<Failure, QuizResponse> result = await quizUsecase.call(QuizParam(amount: amount));
     result.fold(
-      (failure) => emit(QuizError(failure.messege)),
-      (quiz) => emit(QuizLoaded(quiz)),
+      (failure) => emit(QuizError(message: failure.messege)),
+      (quiz) => emit(QuizLoaded(quiz:quiz)),
     );
   }
 
@@ -33,7 +33,7 @@ class QuizCubit extends Cubit<QuizState> {
         correctCount++;
       }
     }
-    emit(QuizResult(correctCount, questions.length));
+    emit(QuizResult(totalQuestions: questions.length, correctAnswers: correctCount,));
   }
 
   void resetQuiz() {

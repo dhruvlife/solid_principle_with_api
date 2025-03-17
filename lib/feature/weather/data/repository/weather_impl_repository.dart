@@ -8,18 +8,17 @@ import 'package:weather/feature/weather/domain/repository/weather_repo.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherRemoteRepo weatherRemoteRepo;
-  WeatherRepositoryImpl(this.weatherRemoteRepo);
+  WeatherRepositoryImpl({required this.weatherRemoteRepo});
   @override
-  Future<Either<Failure, WeatherEntity>> getWeather(String cityName) async {
+  Future<Either<Failure, WeatherEntity>> getWeather({required String cityName}) async {
     try {
-      final response = await weatherRemoteRepo.getWeather(cityName);
+      final response = await weatherRemoteRepo.getWeather(cityName: cityName);
       return Right(response);
     } on DioException catch (e) {
       if (e.response?.statusCode == 404) {
-        return Left(Failure(
-            AppStrings.weatherError));
+        return Left(Failure(messege: AppStrings.weatherError));
       } else {
-        return Left(Failure("An error occurred: ${e.message}"));
+        return Left(Failure(messege: "An error occurred: ${e.message}"));
       }
     }
   }
