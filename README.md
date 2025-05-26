@@ -4,11 +4,14 @@ A Flutter-based Weather and Quiz App that demonstrates the use of SOLID principl
 
 This project serves as an example for learners who want to understand how to implement clean code and software design best practices in a real Flutter application.
 
+---
+
 ![image](https://github.com/user-attachments/assets/c070bdf4-d7db-4bb3-96e4-c9235406b4ce)
 
 
 ---
-
+flow stands to flutter app : 
+---
 
 ![image](https://github.com/user-attachments/assets/74b861fc-7862-43f7-b3f2-449385db7a46)
 
