@@ -1,4 +1,4 @@
-#Weather App
+Weather App
 
 A Flutter-based Weather and Quiz App that demonstrates the use of SOLID principles, Clean Architecture, and API integration with modern Flutter tools and libraries.
 
